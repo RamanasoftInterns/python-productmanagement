@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% load static %}
+<!-- tittle start here -->
+{% block title %}<title>All Products</title> {% endblock %}
+<!-- tittle end here -->
+<!-- custome css here -->
+{% block style %} {% endblock %}
+<!-- custome css end here -->
+<!-- headder start here -->
+<!-- using the navbar.html -->
+{% block header %} {% include 'navbar.html' %} {% endblock %}
+<!-- headder end here -->
+<!-- main content start here -->
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" id="main">
+  <h1
+    class="mr-3 pr-3 align-top border-right inline-block align-content-center"
+  >
+    Search Results
+  </h1>
+  <div class="inline-block align-middle">
+    <h2 class="font-weight-normal lead" id="desc">
+      No Product found for your search
+    </h2>
+  </div>
+</div>
+{% endblock %}
+<!-- main contend end here -->

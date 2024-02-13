@@ -1,0 +1,99 @@
+{% extends 'base.html' %} {% load static %}
+<!-- tittle start here -->
+{% block title %}<title>add product</title> {% endblock %}
+<!-- tittle end here -->
+<!-- custome css here -->
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/addProduct.css' %}" />
+<!--  -->
+{% endblock %}
+<!-- custome css end here -->
+<!-- headder start here -->
+{% block header %}
+<!-- using the navbar.html -->
+{% include 'navbar.html' %} {% endblock %}
+<!-- headder end here -->
+<!-- main content start here -->
+
+{% block content %}
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-4 offset-3 add-form">
+      <form
+        action="{% url 'addProduct' %}"
+        enctype="multipart/form-data"
+        method="post"
+      >
+        {% csrf_token %}
+        <!-- name of the product -->
+        <div class="mb-3">
+          <label for="" class="form-label">Name</label>
+          <input
+            type="text"
+            minlength="3"
+            name="name"
+            required
+            class="form-control"
+          />
+        </div>
+        <!-- name of the product end here -->
+        <!-- price of the product -->
+        <div class="mb-3">
+          <label for="" class="form-label">Price</label>
+          <input type="number" required name="price" class="form-control" />
+        </div>
+        <!-- price of the product end here -->
+
+        <!-- description of the product -->
+        <div class="mb-3">
+          <label for="" class="form-label">Description</label>
+          <textarea
+            class="form-control"
+            name="description"
+            id=""
+            minlength="10"
+            required
+            rows="3"
+          ></textarea>
+        </div>
+        <!-- description of the product end here -->
+        <!-- image here -->
+        <div class="mb-3">
+          <label for="" class="form-label">Choose Image</label>
+          <input
+            type="file"
+            class="form-control"
+            name="image"
+            required
+            id=""
+            placeholder="Select image"
+          />
+        </div>
+        <!-- image end here -->
+
+        <!-- is published here -->
+
+        <div class="mb-3">
+          <label for="" class="form-label">Category</label>
+          <select class="form-select form-select-lg" name="category" id="">
+            {% for category in all_category %}
+            <option value="{{category.id}}">{{category.name}}</option>
+
+            {% endfor %}
+          </select>
+        </div>
+
+        <!-- is published end here -->
+
+        <br />
+        <button class="btn btn-primary" id="submit" type="submit">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+<!-- main contend end here -->

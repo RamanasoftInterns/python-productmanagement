@@ -1,0 +1,54 @@
+{% extends 'base.html' %} {% load static %}
+<!-- tittle start here -->
+{% block title %}<title>{{product.name}} Detail</title> {% endblock %}
+<!-- tittle end here -->
+<!-- custome css here -->
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/productDetail.css' %}" />
+{% endblock %}
+<!-- custome css end here -->
+<!-- headder start here -->
+<!-- using the navbar.html -->
+{% block header %} {% include 'navbar.html' %} {% endblock %}
+<!-- headder end here -->
+<!-- main content start here -->
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row g-5 my-detail-div">
+    <div class="col-md-4">
+      <img
+        src="{{product.image.url}}"
+        width="100%"
+        height="auto"
+        style="object-fit: cover"
+        alt=""
+      />
+    </div>
+    <div class="col-md-8 details-body">
+      <h1 class="mb-3">{{product.name}}</h1>
+      <h3 class="mb-3">&#8377; {{product.price}}</h3>
+      <p class="mb-3">{{product.description}}</p>
+      <p class="mb-3">{{product.created_at}}</p>
+      <div class="row mt-5 gx-3">
+        <div class="col-2">
+          <a href="{% url 'updateProduct' product.id %}" class="btn btn-warning"
+            >Update</a
+          >
+        </div>
+        <div class="col-2">
+          <a href="{% url 'deleteProduct' product.id %}" class="btn btn-danger"
+            >Detete</a
+          >
+        </div>
+      </div>
+      <div class="back-btn">
+        <a href="{% url 'allProducts' %}" class="btn text-danger"
+          ><i class="fa-solid fa-xmark"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+<!-- main contend end here -->

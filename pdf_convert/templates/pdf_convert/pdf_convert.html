@@ -1,0 +1,70 @@
+{% extends 'base.html' %} {% load static %}
+<!-- tittle start here -->
+{% block title %}<title>Pdf Data</title> {% endblock %}
+<!-- tittle end here -->
+<!-- custome css here -->
+{% block style %} {% endblock %}
+<!-- custome css end here -->
+<!-- headder start here -->
+<!-- using the navbar.html -->
+
+<!-- headder end here -->
+<!-- main content start here -->
+
+{% block content %}
+<div class="container mt-5">
+  <a
+    class="btn btn-secondary"
+    style="text-decoration: none; color: white"
+    href="{% url 'allProducts' %}"
+    >Home</a
+  >
+
+  <div class="d-flex justify-content-center mt-5">
+    <h2>Product List</h2>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="">
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Image</th>
+              <th scope="col">Name</th>
+              <th scope="col">Discription</th>
+              <th scope="col">Category</th>
+              <th scope="col">Price</th>
+              <th scope="col">Created At</th>
+              <th scope="col">Is Published</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for product in products %}
+            <tr>
+              <th scope="row">{{product.id}}</th>
+              <th scope="row">
+                <img
+                  src="{{product.image.url}}"
+                  width="50px"
+                  height="40px"
+                  alt=""
+                />
+              </th>
+              <td>{{product.name}}</td>
+              <td>{{product.description}}</td>
+              <td>{{product.category.name}}</td>
+              <td>{{product.price}}</td>
+              <td>{{product.created_at}}</td>
+              <td>{{product.is_published}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <a href="{% url 'pdf_view' %}" class="btn btn-primary mb-5">PDF Download</a>
+</div>
+{% endblock %}
+<!-- main contend end here -->

@@ -1,0 +1,104 @@
+{% extends 'base.html' %} {% load static %}
+<!-- tittle start here -->
+{% block title %}<title>Register page</title> {% endblock %}
+<!-- tittle end here -->
+<!-- custome css here -->
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}" />
+<!--  -->
+{% endblock %}
+<!-- custome css end here -->
+{% block header %}
+<!-- using the navbar.html -->
+{% include 'navbar.html' %} {% endblock %}
+<!-- headder end here -->
+<!-- main content start here -->
+{% block content %}
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-5 p-4 offset-3 mt-4 register-form">
+      <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3 d-flex justify-content-center">
+          <h2>Register form</h2>
+        </div>
+        {% if messages %}<!-- messages here -->
+        {% for message in messages %}
+
+        <div
+          class="alert alert-warning alert-dismissible fade show"
+          role="alert"
+        >
+          {{message}}
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          ></button>
+        </div>
+
+        {% endfor %} {% endif %}
+        <!--messages end here  -->
+
+        <!-- name of the user -->
+        <div class="mb-3">
+          <label for="" class="form-label">User name</label>
+          <input
+            type="text"
+            minlength="3"
+            name="username"
+            required
+            class="form-control"
+          />
+        </div>
+        <!-- name of the user end here -->
+        <!-- email of the user -->
+        <div class="mb-3">
+          <label for="" class="form-label">Email</label>
+          <input type="email" required name="email" class="form-control" />
+        </div>
+        <!-- email of the user end here -->
+        <!-- password start here -->
+        <div class="mb-3">
+          <label for="" class="form-label">Password</label>
+          <input
+            type="password"
+            required
+            name="password"
+            class="form-control"
+          />
+        </div>
+        <!-- password end here -->
+        <!-- confirm password start here -->
+        <div class="mb-3">
+          <label for="" class="form-label">Confirm Password</label>
+          <input
+            type="password"
+            name="confirmpassword"
+            required
+            class="form-control"
+          />
+        </div>
+        <!-- confirm password end here -->
+        <div class="mb-2">
+          <p>
+            <b>Already have an account?</b
+            ><a href="{% url 'login' %}">Click here to Login</a>
+          </p>
+        </div>
+
+        <br />
+        <div class="d-grid mb-3">
+          <button class="btn btn-primary" id="submit" type="submit">
+            Register
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+<!-- main contend end here -->

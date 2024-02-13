@@ -1,0 +1,101 @@
+{% extends 'base.html' %} {% load static %}
+<!-- tittle start here -->
+{% block title %}<title>Login page</title> {% endblock %}
+<!-- tittle end here -->
+<!-- custome css here -->
+{% block style %}
+
+<style>
+  .login-form{
+  border: 1px solid gray;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px gray;
+}
+
+</style>
+<!--  -->
+{% endblock %}
+<!-- custome css end here -->
+{% block header %}
+<!-- using the navbar.html -->
+{% include 'navbar.html' %} {% endblock %}
+<!-- headder end here -->
+<!-- main content start here -->
+{% block content %}
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-5 p-3 offset-3 mt-4 login-form">
+      <form
+        action="{% url 'login' %}"
+        enctype="multipart/form-data"
+        method="post"
+      >
+        {% csrf_token %}
+        <div class="mb-3">
+          <div class="text-center">
+            <h2>Login</h2>
+            <br />
+            {% if messages %}<!-- messages here -->
+            {% for message in messages %}
+
+            <div
+              class="alert alert-warning alert-dismissible fade show"
+              role="alert"
+            >
+              {{message}}
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            {% endfor %} {% endif %}
+            <!--messages end here  -->
+          </div>
+        </div>
+        <!-- name of the product -->
+        <div class="mb-3">
+          <label for="" class="form-label">User name</label>
+          <input
+            type="text"
+            minlength="3"
+            name="username"
+            required
+            class="form-control"
+          />
+        </div>
+        <!-- name of the product end here -->
+        <!-- price of the product -->
+        <div class="mb-3">
+          <label for="" class="form-label">Password</label>
+          <input
+            type="password"
+            required
+            name="password"
+            class="form-control"
+          />
+        </div>
+        <!-- price of the product end here -->
+        <div class="mb-2">
+          <p>
+            <b>Don't have an account?</b
+            ><a href="{% url 'register' %}">Click here to register</a>
+          </p>
+        </div>
+
+        <br />
+        <div class="d-grid mb-3">
+          <button class="btn btn-primary" id="submit" type="submit">
+            login
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+<!-- main contend end here -->

@@ -1,0 +1,25 @@
+
+.my-detail-div{
+  border: 1px solid gray;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 3px 3px 5px gray;
+}
+.details-body{
+  position: relative;
+
+}
+
+.back-btn{
+position: absolute;
+right: 5px;
+top: -50px;
+}
+.back-btn i{
+  font-size: 2rem;
+  transition: font-size 0.2s;
+}
+.back-btn i:hover{
+  font-size: 3rem;
+}
+
